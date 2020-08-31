@@ -19,14 +19,7 @@ async function generate() {
         console.log(usuarios.results);
 
         usuarios.results.forEach(user =>
-            fs.createWriteStream('usuarios.csv', { flags: "a" }).write(
-                               `${user.name.first},
-                                 ${user.name.last},
-                                 ${user.email},
-                                 ${user.dob.age},
-                                 ${user.gender},
-                                 ${user.login.username},
-                                 ${user.login.password}`,
+            fs.createWriteStream('usuarios.csv', { flags: "a" }).write(`${user.name.first},${user.name.last},${user.email},${user.dob.age},${user.gender},${user.login.username},${user.login.password}\n`,
                 (er) => {
                     if (er) throw err;
                     console.log('OK');
